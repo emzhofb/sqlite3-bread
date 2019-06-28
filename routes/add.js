@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const db = require('../models/data');
+const controller = require('../controllers/add');
 
-router.get('/add', (req, res) => {
-  res.render('add');
-});
+router.get('/add', controller.getAdd);
 
 module.exports = router;

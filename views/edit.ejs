@@ -15,15 +15,15 @@
   <body>
     <div class="container" style="padding: 10px">
       <h1>Edit Data</h1>
-      <form action="/edit/<%= data.ID %>" method="POST">
+      <form action="/edit/<%= data.id %>" method="POST">
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">ID</label>
           <div class="col-sm-8">
             <input
               type="text"
               class="form-control"
-              id="formGroupExampleInput"
-              value="<%= data.ID %>"
+              id="id"
+              value="<%= data.id %>"
               disabled
             />
           </div>
@@ -34,9 +34,9 @@
             <input
               type="text"
               class="form-control"
-              id="String"
-              name="String"
-              value="<%= data.String %>"
+              id="string"
+              name="string"
+              value="<%= data.string %>"
             />
           </div>
         </div>
@@ -46,9 +46,9 @@
             <input
               type="text"
               class="form-control"
-              id="Integer"
-              name="Integer"
-              value="<%= data.Integer %>"
+              id="integer"
+              name="integer"
+              value="<%= data.integer %>"
             />
           </div>
         </div>
@@ -58,9 +58,9 @@
             <input
               type="text"
               class="form-control"
-              id="Float"
-              name="Float"
-              value="<%= data.Float %>"
+              id="float"
+              name="float"
+              value="<%= data.float %>"
             />
           </div>
         </div>
@@ -70,9 +70,9 @@
             <input
               type="date"
               class="form-control"
-              id="Date"
-              name="Date"
-              value="<%= data.Date %>"
+              id="date"
+              name="date"
+              value="<%= data.date %>"
             />
           </div>
         </div>
@@ -83,11 +83,11 @@
               id="inputState"
               class="form-control"
               type="boolean"
-              name="Boolean"
-              id="Boolean"
+              name="boolean"
+              id="boolean"
             >
-              <option value="a" <%= data.Boolean.toString() == "true" ? "selected" : "" %>>true</option>
-              <option value="" <%= data.Boolean.toString() == "false" ? "selected" : "" %>>false</option>
+              <option value="a" <%= data.boolean == "true" ? "selected" : "" %>>true</option>
+              <option value="" <%= data.boolean == "false" ? "selected" : "" %>>false</option>
             </select>
           </div>
         </div>
