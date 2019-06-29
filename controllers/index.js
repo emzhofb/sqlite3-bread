@@ -50,23 +50,51 @@ exports.getIndex = (req, res) => {
     filter.push(booleanFiltered);
     field.push('boolean');
   }
-
-  let sql = `SELECT * FROM datatypes`;
-
+  
+  let sql = `SELECT count(*) FROM datatypes`;
+  
   if (filter.length > 0) {
     sql += ` WHERE`;
     for (let i = 0; i < field.length; i++) {
-      if (field[i] === 'date') sql += ` ${field[i]} >= ?`
-      else if (field[i] === 'enddate') sql += ` date <= ?`
+      if (field[i] === 'date') sql += ` ${field[i]} >= ?`;
+      else if (field[i] === 'enddate') sql += ` date <= ?`;
       else sql += ` ${field[i]} = ?`;
-
+      
       if (i !== field.length - 1) sql += ` AND`;
     }
   }
-  
-  db.all(sql, filter, (err, rows) => {
-    if (err) console.log(err);
 
-    res.render('index', { data: rows });
+  const page = Number(req.params.page) || 1;
+  const perPage = 3;
+  
+  db.all(sql, filter, (err, count) => {
+    const total = count[0]['count(*)'];
+    const pages = Math.ceil(total / perPage);
+    const offset = (page - 1) * perPage;
+
+    sql = `SELECT * FROM datatypes`;
+
+    if (filter.length > 0) {
+      sql += ` WHERE`;
+      for (let i = 0; i < field.length; i++) {
+        if (field[i] === 'date') sql += ` ${field[i]} >= ?`;
+        else if (field[i] === 'enddate') sql += ` date <= ?`;
+        else sql += ` ${field[i]} = ?`;
+
+        if (i !== field.length - 1) sql += ` AND`;
+      }
+    }
+
+    sql += ` LIMIT ${perPage} OFFSET ${offset}`;
+    
+    db.all(sql, filter, (err, rows) => {
+      if (err) console.log(err);
+
+      res.render('index', {
+        data: rows,
+        current: page,
+        pages: pages
+      });
+    });
   });
 };
