@@ -63,7 +63,7 @@ exports.getIndex = (req, res) => {
       if (i !== field.length - 1) sql += ` AND`;
     }
   }
-
+  
   db.all(sql, filter, (err, rows) => {
     if (err) console.log(err);
 
