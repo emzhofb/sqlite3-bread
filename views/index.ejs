@@ -16,12 +16,12 @@
     <div class="container" style="padding: 20px">
       <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
       <h2>Filters</h2>
-      <form action="/search" method="POST">
+      <form action="/" method="GET">
         <div class="container">
           <div class="row">
             <div class="col-sm-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" />ID
+                <input class="form-check-input" type="checkbox" name="idChecked" />ID
               </div>
             </div>
             <div class="col-sm-8">
@@ -29,8 +29,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="ID"
-                  name="ID"
+                  id="id"
+                  name="id"
                   placeholder="ID"
                 />
               </div>
@@ -39,7 +39,11 @@
           <div class="row">
             <div class="col-sm-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" />String
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="stringChecked"
+                />String
               </div>
             </div>
             <div class="col-sm-8">
@@ -47,8 +51,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="String"
-                  name="String"
+                  id="string"
+                  name="string"
                   placeholder="String"
                 />
               </div>
@@ -57,7 +61,11 @@
           <div class="row">
             <div class="col-sm-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" />Integer
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="integerChecked"
+                />Integer
               </div>
             </div>
             <div class="col-sm-8">
@@ -65,8 +73,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="Integer"
-                  name="Integer"
+                  id="integer"
+                  name="integer"
                   placeholder="Integer"
                 />
               </div>
@@ -75,7 +83,11 @@
           <div class="row">
             <div class="col-sm-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" />Float
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="floatChecked"
+                />Float
               </div>
             </div>
             <div class="col-sm-8">
@@ -83,8 +95,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="Float"
-                  name="Float"
+                  id="float"
+                  name="float"
                   placeholder="Float"
                 />
               </div>
@@ -93,7 +105,11 @@
           <div class="row">
             <div class="col-sm-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" />Date
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="dateChecked"
+                />Date
               </div>
             </div>
             <div class="col-sm-3">
@@ -101,8 +117,8 @@
                 <input
                   type="date"
                   class="form-control"
-                  id="Date"
-                  name="Date"
+                  id="startDate"
+                  name="startDate"
                   placeholder="start date"
                 />
               </div>
@@ -113,8 +129,8 @@
                 <input
                   type="date"
                   class="form-control"
-                  id="Date"
-                  name="Date"
+                  id="endDate"
+                  name="endDate"
                   placeholder="end date"
                 />
               </div>
@@ -123,14 +139,18 @@
           <div class="row">
             <div class="col-sm-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" />Boolean
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="booleanChecked"
+                />Boolean
               </div>
             </div>
             <div class="form-group col-md-3">
-              <select id="inputState" class="form-control">
+              <select class="form-control" name="boolean" id="boolean">
                 <option selected>Choose the boolean...</option>
-                <option value="a" >true</option>
-                <option value="" >false</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
               </select>
             </div>
           </div>
