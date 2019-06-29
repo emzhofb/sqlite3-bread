@@ -64,10 +64,6 @@ exports.getIndex = (req, res) => {
     }
   }
 
-  console.log(sql);
-  console.log(filter);
-  console.log(field);
-
   db.all(sql, filter, (err, rows) => {
     if (err) console.log(err);
 
