@@ -42,7 +42,10 @@ exports.getIndex = (req, res) => {
     filter.push(startDateFiltered);
     field.push('date');
   }
-  if (dateChecked && endDateFiltered) filter.push(endDateFiltered);
+  if (dateChecked && endDateFiltered) {
+    filter.push(endDateFiltered);
+    field.push('enddate');
+  }
   if (booleanChecked && booleanFiltered) {
     filter.push(booleanFiltered);
     field.push('boolean');
@@ -51,11 +54,19 @@ exports.getIndex = (req, res) => {
   let sql = `SELECT * FROM datatypes`;
 
   if (filter.length > 0) {
-    field.forEach(d => {
-      console.log(d);
-      sql += ` WHERE ${d} = ?`;
-    })
+    sql += ` WHERE`;
+    for (let i = 0; i < field.length; i++) {
+      if (field[i] === 'date') sql += ` ${field[i]} >= ?`
+      else if (field[i] === 'enddate') sql += ` date <= ?`
+      else sql += ` ${field[i]} = ?`;
+
+      if (i !== field.length - 1) sql += ` AND`;
+    }
   }
+
+  console.log(sql);
+  console.log(filter);
+  console.log(field);
 
   db.all(sql, filter, (err, rows) => {
     if (err) console.log(err);
