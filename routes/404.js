@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../controllers/delete');
+const controller = require('../controllers/404');
 
-router.get('/:id', controller.getDelete);
+router.get('*', controller.get404);
 
 module.exports = router;

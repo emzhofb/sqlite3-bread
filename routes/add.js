@@ -3,7 +3,7 @@ const router = express.Router();
 
 const controller = require('../controllers/add');
 
-router.get('/add', controller.getAdd);
-router.post('/add', controller.postAdd);
+router.get('/', controller.getAdd);
+router.post('/', controller.postAdd);
 
 module.exports = router;
