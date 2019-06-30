@@ -66,6 +66,7 @@ exports.getIndex = (req, res) => {
 
   const page = Number(req.params.page) || 1;
   const perPage = 3;
+  const queries = req.query;
   
   db.all(sql, filter, (err, count) => {
     const total = count[0]['count(*)'];
@@ -92,6 +93,7 @@ exports.getIndex = (req, res) => {
 
       res.render('index', {
         data: rows,
+        query: queries,
         current: page,
         pages: pages
       });
