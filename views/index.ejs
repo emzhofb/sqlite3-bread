@@ -235,13 +235,13 @@
                 <a class="page-link" href="/page/1" >First</a>
               </li>
             <% } %> 
-            <% let i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% let i = (Number(current) > 3 ? Number(current) - 2 : 1) %>
             <% if (i !== 1) { %>
               <li class="page-item disabled">
                 <a>...</a>
               </li>
             <% } %> 
-            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% for (; i <= (Number(current) + 2) && i <= pages; i++) { %>
               <% if (i == current) { %>
                 <li class="page-item active" aria-current="page">
                   <a class="page-link" href="/page/<%= i %>" name="page"
@@ -256,7 +256,7 @@
                 </li>
               <% } %> 
             <% } %> 
-            <% if (i == Number(current) + 4 && i < pages) { %>
+            <% if (i == Number(current) + 3 && i < pages) { %>
               <li class="page-item disabled">
                 <a>...</a>
               </li>
